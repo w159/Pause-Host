@@ -1,0 +1,13 @@
+# Times out after 10 minutes with no interaction
+
+function Pause-Host
+{
+    param(
+            $Delay = 600
+         )
+    $counter = 0;
+    While(!$host.UI.RawUI.KeyAvailable -and ($counter++ -lt $Delay))
+    {
+        [Threading.Thread]::Sleep(1000)
+    }
+}
